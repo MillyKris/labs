@@ -4,10 +4,7 @@
 }
 
 body{
-	padding-bottom: 500px;
-	
-	
-	
+	padding-bottom: 500px;	
 }
 .row .btn-warning{
 	margin-right: 50px;
@@ -25,11 +22,11 @@ body{
 	font-weight: bold;
 }
 li {
-    list-style-type: none; /* Убираем маркеры */
+    list-style-type: none; 
 }
 ul {
-    margin-left: 0; /* Отступ слева в браузере IE и Opera */
-    padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+    margin-left: 0;
+    padding-left: 0; 
 }
 .sticky-top{
 	top: 5em;
@@ -49,10 +46,10 @@ ul {
 .teacher:before{
 	content:"";
 	border-radius:50%;
-    background:url("img/Charles-Severance.jpeg") 50% 50% no-repeat;
-    display:inline-block;
-    width:70px;
-    height:55px;
+    	background:url("img/Charles-Severance.jpeg") 50% 50% no-repeat;
+    	display:inline-block;
+    	width:70px;
+    	height:55px;
 }
 .skills{
 	border: 1px solid grey;
@@ -68,14 +65,9 @@ ul {
 }
 .logo{
 	background-image:url("https://cdn.cookielaw.org/logos/3e5657ed-0ab7-410b-95c6-ac68153c5668/e23dfd2b-ce77-4ebc-baef-6fd5e6a962fa/logo_blue_rgb.png");
-    background-position: left;
+    	background-position: left;
 }
-.y{
-background-color: yellow;
-}
-.r{
-background-color: pink;
-}
+
 /*.container, .row{
 	border: 1px solid black;
 }*/
@@ -133,11 +125,6 @@ a:hover{
 }
 nav a:hover{
 	color: grey;
-}
-@media(max-width: 500px){
-	#navbarSearch{
-		display: none;
-	}
 }
 .ad{
 	display: block;
