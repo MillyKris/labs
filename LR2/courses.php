@@ -39,8 +39,8 @@ require_once 'logic.php';
                                 <option value="<?php echo $iten['type-id']?>"> <?php echo $iten['type-name'] ?></option>';
                         <?php endforeach ?>
                     </select>
-                <button type = "submit" name = "Filter" class = "btn btn-lg btn-outline-success">Apply</button>
-                <button type = "submit" name = "clearFilter" class = "btn  btn-outline-danger">Reset</button>
+                <button type = "submit" name = "Filter" class = "btn btn-lg btn-outline-success mt-5 mr-2">Apply</button>
+                <button type = "submit" name = "clearFilter" class = "btn mt-5 btn-outline-danger">Reset</button>
             </form>
         </div>
         
