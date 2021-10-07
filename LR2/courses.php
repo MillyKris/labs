@@ -46,13 +46,10 @@ require_once 'logic.php';
         
 
         <div class="container text-center">
-            <?php  ///print_r($prevData);
+            <?php 
                 switch($arrayCondition){
-                    case -1:
-                    echo "<div style = 'padding: 0 5px;margin: auto; width:310px; height:100px;background:rgba(255, 0, 0, 0.4);'><h2 style = 'line-height: 100px;'>Ничего не найдено </h2></div>";
-                    break;
                     case 0:
-                    echo "<div style = 'padding: 0 5px;margin: auto; width:310px; height:100px;background:rgba(255, 0, 0, 0.4);'><h2 style = 'line-height: 100px;'>Ничего не найдено (Основной массив пуст)</h2></div>";
+                    echo "<div style = 'padding: 0 5px;margin: auto; width:310px; height:100px;background:rgba(255, 0, 0, 0.4);'><h2 style = 'line-height: 100px;'>Ничего не найдено </h2></div>";
                     break;
                     case 1:?>
                         <table class="table">
@@ -78,38 +75,11 @@ require_once 'logic.php';
                             </tbody>
                         </table>
                     <?php break;
-                    case 2:?>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th scope = "col"></th>
-                                    <th scope = "col">Название</th>
-                                    <th scope = "col">Преподаватель</th>
-                                    <th scope = "col">Программа</th>
-                                    <th scope = "col">Цена</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php foreach($array2 as $row):?>
-                                    <tr>
-                                        <td><img src="<?=$row['img_path']?>"></td>
-                                        <td><?=$row['name']?></td>
-                                        <td><?=$row['type-name']?></td>
-                                        <td><?=$row['program']?></td>
-                                        <td><?=$row['cost']?></td>
-                                    </tr>
-                                <?php endforeach;?>            
-                            </tbody>
-                        </table>
-                    <?php break;
                     default:echo "<div style = 'padding: 0 5px;margin: auto; width:310px; height:100px;background:rgba(255, 0, 0, 0.4);'><h2 style = 'line-height: 100px;'>Switch error </h2></div>";}
             ?>
             
         </div>
     </div>
-
-
-
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
