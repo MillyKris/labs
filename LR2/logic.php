@@ -4,7 +4,6 @@
 $types = $db->prepare("SELECT * FROM `teachers_types`");
 $types->execute();
 $teachers = $types->fetchAll(PDO::FETCH_ASSOC);
-
 /*Filter*/
     $arBinds = [];
     $prevData = [];
@@ -57,5 +56,5 @@ $stmt = $db->prepare($sql2);
 $result = $stmt->execute($arBinds);
 $array = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if(!count($array))
-     $arrayCondition = -1;    
-else $arrayCondition = 2;
+     $arrayCondition = 0;    
+else $arrayCondition = 1;
