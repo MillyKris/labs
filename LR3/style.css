@@ -1,0 +1,221 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	padding-bottom: 500px;
+	
+	
+	
+}
+.row .btn-warning{
+	margin-right: 50px;
+}
+.sticky-top .nav-item{
+	font-size: 13px;
+}
+
+.content{
+	padding: 20px 130px;
+}
+
+.advantages dt{
+	font-size: 20px;
+	font-weight: bold;
+}
+li {
+    list-style-type: none; /* Убираем маркеры */
+}
+ul {
+    margin-left: 0; /* Отступ слева в браузере IE и Opera */
+    padding-left: 0; /* Отступ слева в браузере Firefox, Safari, Chrome */
+}
+.sticky-top{
+	top: 5em;
+	margin-bottom: 10px;
+}
+.jumbotron{
+	background: linear-gradient(to right, #023166, #024693);
+	margin-top: 50px;
+	color: #fff;
+}
+.jumbotron .marks{
+	margin-top: 20px;
+}
+.marks span{
+	margin-right: 30px;
+}
+.teacher:before{
+	content:"";
+	border-radius:50%;
+    background:url("Charles-Severance.jpeg") 50% 50% no-repeat;
+    display:inline-block;
+    width:70px;
+    height:55px;
+}
+.skills{
+	border: 1px solid grey;
+	padding: 10px 20px;
+}
+.skills li{
+	display:inline-block;
+	margin-right: 25px;
+	border: 1px solid grey;
+	border-radius:8% 8%;
+	padding: 3px 10px;
+	background-color: lightgrey;
+}
+.logo{
+	background-image:url("https://cdn.cookielaw.org/logos/3e5657ed-0ab7-410b-95c6-ac68153c5668/e23dfd2b-ce77-4ebc-baef-6fd5e6a962fa/logo_blue_rgb.png");
+    background-position: left;
+}
+.y{
+background-color: yellow;
+}
+.r{
+background-color: pink;
+}
+/*.container, .row{
+	border: 1px solid black;
+}*/
+dl.teach{
+	width: 160px;
+}
+
+.btn-warning{
+	width: 260px;
+	display: inline-block;
+}
+.nav-link.active{
+	color: #2a73cc;
+	font-weight: bold;
+}
+.nav-link{
+	color: #373a3c;
+}
+.navbar-nav {
+	width: 100%;
+}
+.hidden{
+	display: none
+}
+.nav-item.dropdown{
+	background-color: #2a73cc;
+	font-weight: bold;
+}
+.navbar-brand{
+	color: #2a73cc!important;
+	font-weight: 900;
+}
+.btn-warning{
+	font-weight: bold;
+}
+.nav-item.dropdown #navbarDropdownMenuLink{
+	color: #fff;
+}
+
+nav.navbar .dropdown:hover > .dropdown-menu {
+ display: block; 
+} 
+.dropdown-menu p{
+	font-weight: bold;
+}
+.sub{
+	display: block;
+	width: 100%;
+}
+a{
+	color: #fff;
+}
+a:hover{
+	color: #fff;
+}
+nav a:hover{
+	color: grey;
+}
+@media(max-width: 500px){
+	#navbarSearch{
+		display: none;
+	}
+}
+.ad{
+	display: block;
+}
+.advantages dt{
+    font-weight:500;
+}
+.advantages .a::before{
+    content:"";
+    float: left;
+    background:url("a.png") 50% 0% no-repeat;
+    display:block;
+    width:90px;
+    height:120px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+.advantages .b::before{
+    content:"";
+    float: left;
+    background:url("b.png") 50% 50% no-repeat;
+    display:block;
+    width:90px;
+    height:120px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+.advantages .c::before{
+    content:"";
+    float: left;
+    background:url("c.png") 50% 50% no-repeat;
+    display:block;
+    width:90px;
+    height:120px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+.advantages .d::before{
+    content:"";
+    float: left;
+    background:url("d.png") 50% 50% no-repeat;
+    display:block;
+    width:90px;
+    height:120px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+.advantages .e::before{
+    content:"";
+    float: left;
+    background:url("e.png") 50% 50% no-repeat;
+    display:block;
+    width:90px;
+    height:120px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+.advantages .f::before{
+    content:"";
+    float: left;
+    background:url("f.png") 50% 50% no-repeat;
+    display:block;
+    width:90px;
+    height:120px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+.advantages .g::before{
+    content:"";
+    float: left;
+    background:url("g.png") 50% 50% no-repeat;
+    display:block;
+    width:80px;
+    height:150px;
+    background-size: 90%;
+    margin-left: 3px;
+}
+
+.row{
+	margin-bottom: 20px;
+}
