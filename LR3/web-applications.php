@@ -1,100 +1,8 @@
 <?php 
-    //session_start();
     require_once ($_SERVER['DOCUMENT_ROOT'] . '/LR3/session.php');
-    //include("exit.php");
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/LR3/header.php');
+    require_once ($_SERVER['DOCUMENT_ROOT'] . '/LR3/nav.php');
 ?>
-<!doctype html>
-<html lang="en">
-<head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
-
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <title>Building Web Applications in PHP | Coursera</title>
-    <link rel="stylesheet"href="style.css">
-</head>
-
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="nav-link navbar-brand d-md-none" href="#">Coursera</a>
-        <i class="fa fa-search d-md-none" aria-hidden="true"></i>
-
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav part-left">
-            <li class="nav-item active">
-              <a class="nav-link navbar-brand" href="#">Coursera</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Изучить</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <p class = "text-left dropdown-item">цели</p>
-                <a class="dropdown-item" href="#">Пройти бесплатный курс</a>
-                <a class="dropdown-item" href="#">Получите диплом</a>
-                <a class="dropdown-item" href="#">Получите сертификат</a>
-                <a class="dropdown-item" href="#">Начните карьеру или продвиньтесь по карьерной лестнице</a>
-                <p class="dropdown-item text-left">темы</p>
-                <a class="dropdown-item" href="#">Наука о данных</a>
-                <a class="dropdown-item" href="#">Бизнес</a>
-                <a class="dropdown-item" href="#">Компьютерные науки</a>
-                <a class="dropdown-item" href="#">Информационные технологии</a>
-                <a class="dropdown-item" href="#">Изучение языков</a>
-                <a class="dropdown-item" href="#">здоровье</a>
-                <a class="dropdown-item" href="#">Личное развитие</a>
-                <a class="dropdown-item but" href = "#">Посмотреть все предметы</a>
-              </div>
-            </li>
-            <li class="nav-item" id = "navbarSearch">
-                    <form class="form-inline ">
-                        <input class="form-control" type="text" placeholder="Чему вы хотите научиться?">
-                        <button class="btn btn-outline-info" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                    </form>
-            </li>
-        </ul>
-        <ul class="navbar-nav justify-content-end">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Для организаций</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Для студентов</a>
-            </li>
-            <?php
-                if(userLogic::isAuthorized()):?>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#" style = "color:#2a73cc!important;"><?php echo htmlspecialchars($username)?></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="L2/courses.php" style = "color:#2a73cc!important;">Фильтр</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="authorization.php" style = "color:#2a73cc!important;"><?htmlspecialchars($username)?></a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="exit.php" style = "color:#2a73cc!important;">Выйти</a>
-                    </li>
-            <?php else:?>
-                    <li class="nav-item">
-                      <a class="nav-link" href="authorization.php" style = "color:#2a73cc!important;">Войти</a>
-                    </li>
-                    <li class="nav-item">
-                      <a href = "register.php" class="btn btn-primary">Зарегистрироваться</a>
-                    </li>
-            <?php endif;?>
-        </ul>
-        </div>
-    </nav>
-
-
-
-
-
 <!--Jumbotron-->
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
@@ -276,13 +184,6 @@
 
 
     </div>
- 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
-
-</body>
-</html>
+ <?php 
+ require_once ($_SERVER['DOCUMENT_ROOT'] . '/LR3/footer.php');
+ ?>
