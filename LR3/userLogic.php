@@ -5,7 +5,6 @@ class userLogic
 	public static function signUp(string $email, string $fullName, int $bloodType, string $factor, string $vk, string $password, string $dateOfBirth, string $address, string $gender, string $interests, string $password2) :string{
 			///регистрируем пользователя, возвращаем ошибки
 			if(strcmp($password, $password2) != 0) return "Пароли не совпадают". $password . "   ".$password;
-			if($_SERVER['REQUEST_METHOD'] == "POST"){
 				if(static::isAuthorized()){
 					return "Вы уже авторизованы";
 				}
@@ -20,8 +19,7 @@ class userLogic
 					return "Такой пользователь не найден";
 				}
 				$_SESSION['USER-ID'] = $user['user-id'];
-				return "Вы успешно зарегистрировались";
-			}
+				return "";
 	}
 
 	public static function signIn(string $email, string $password) : string{
@@ -37,7 +35,7 @@ class userLogic
 		}
 		//if($password != $user['password']) return "Неверно указан пароль<br>";
 		$_SESSION['USER-ID'] = $user['user-id'];
-		return "Вы успешно зарегистрировались";
+		return "";
 	}
 	public static function isAuthorized() :bool{
 		if(array_key_exists('USER-ID', $_SESSION))
