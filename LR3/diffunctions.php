@@ -1,6 +1,5 @@
 
 <?php
-
 function clearData($var){
 	return trim(strip_tags($var));
 }
@@ -24,19 +23,6 @@ function checkFormat($data, $type){
 				return true;
 			}
 			break;
-		case "gender":
-			$data = strtolower($data);
-			$pattern = '/^[mfмж]$/';
-			if(preg_match($pattern, $data)){
-				return true;
-			}
-			break;
-		//case "vk":
-			/*$pattern = '/^https://vk.com/*[a-zA-Z0-9-_]$/';
-			if(preg_match($pattern, $data)){
-				return true;
-			}
-			break;*/
 	}
 	return false;
 }
