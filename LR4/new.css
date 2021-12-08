@@ -1,0 +1,18 @@
+ul.H1{
+	display: block;
+	color: red;
+	margin-left: 20px;
+}
+ul.H2{
+	display: block;
+	color: blue;
+	margin-left: 20px;
+}
+ul.H3{
+	display: block;
+	color: blue;
+	margin-left: 20px;
+}
+.row.content{
+	margin-left: 30px;
+}
