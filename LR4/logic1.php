@@ -23,8 +23,6 @@ else{
 } 
 if(array_key_exists("text", $_POST) && ($_POST['text']) != null){
 	 $html = $_POST['text'];
-	 //print_r($_POST);
-	// echo $prevData;
 }
 $prevData = $html;
 $dom = new DomDocument();
@@ -34,11 +32,6 @@ $images = getImages($html, $dom);
 $html = dotesComma($html);
 $content = structure($html);
 $html = style($html);
-
-
-
-
-
 
 
 function getImages($html, $dom){
@@ -62,7 +55,6 @@ function dotesComma($html){
 	return $str;
 }
 function structure(&$html){
-
 	preg_match_all("/<[hH]([1-3]).*?>(.*?)<\/[hH]([1-3])>/", $html, $items);
 	$content = "<ul class = 'H1'>";
 	$quantityanchor = 0;
@@ -81,7 +73,6 @@ function structure(&$html){
 			$str .= '&hellip;';
 			
 		}
-		
   		$content .= "<li><a href='#HAnch{$quantityanchor}'>{$items[2][$i]}</a></li>";
 		$html=str_replace($items[0][$i],"<h{$items[1][$i]} id='HAnch{$quantityanchor}'>{$items[0][$i]}</h{$items[1][$i]}>", $html);
 	}
@@ -99,27 +90,26 @@ function style(&$html){
 	       $elements[0][$j] = "";
 	  }
 	}
-	//var_dump($elements[0]);
-	//убираем атрибут
+	//убрать атрибут
 	for($i = 0; $i < count($elements[0]); $i ++){
 	    $elements[0][$i] = str_replace("\"", "'", $elements[0][$i]);
 	    $html = str_replace($elements[0][$i], '"STYLE '.$i.'"', $html);
 	}
-	//создаем css
+	//создать css
 	$css = [];
 	for($i = 0; $i < count($elements[0]); $i ++){
 	  $elements[0][$i] = str_replace('style = ', '', $elements[0][$i]);
 	  $elements[0][$i] = str_replace('\'', '', $elements[0][$i]);
 	  $css[$i] = $elements[0][$i];
 	}
-	//убираем знаки препинания, создаем названия
+	//убрать знаки препинания, создать названия
 	  $elements[0] = preg_replace('/\pP/', '', $elements[0]);
 	  $elements[0] = preg_replace('/\s/', '', $elements[0]);
-	for($i = 0; $i < count($css); $i ++){
-	  if(!empty($css[$i]))
-	    $css[$i] = ".".$elements[0][$i]."{".$css[$i]."}";
-	} 
-	//создаем классы
+	  for($i = 0; $i < count($css); $i ++){
+	  	if(!empty($css[$i]))
+	    		$css[$i] = ".".$elements[0][$i]."{".$css[$i]."}";
+	  } 
+	//создать классы
 	for($i = 0; $i < count($css); $i ++){    
 	      $html = str_replace('"STYLE '.$i.'"', ' class = \' '.$elements[0][$i].' \'', $html);
 	      if(preg_match("#\s(class = '(.*?)')\s(class\s?=\s?'(.*?)')\s?.*?>#siu", $html)){
