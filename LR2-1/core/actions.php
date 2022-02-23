@@ -10,8 +10,11 @@ class courseActions{
 		return self::$message;
 	}
 
-	public static function viewAll(){
-		$array = courseTable::selectAll();
+	public static function viewAll($filter = 'no'){
+		if(is_numeric($filter))
+			$array = courseTable::selectAll((int)$filter);
+		else
+			$array = courseTable::selectAll(-1);
 		if($array === null){
 			self::$message .= "Ошибка: не удалось извлечь данные (courses)";
 			return null;
@@ -39,11 +42,16 @@ class courseActions{
 				self::$message .= "Ошибка загрузки файла: Файл слишком большой ".$_FILES['image']['error'];
 				return null;
 			}
-			if(!courseTable::insert($name, $teacher, $program, $cost, $file)){
-				self::$message .= "Ошибка:<br>".PDO::errorInfo();
-				return null;
+			try{
+				if(!courseTable::insert($name, $teacher, $program, $cost, $file)){
+					self::$message .= "Ошибка:<br>".PDO::errorInfo();
+					return null;
+				}
+				return true;
 			}
-			return true;
+			catch(Exception $e){
+				self::$message .= "Ошибка:<br>".$e;
+			}
 		}
 	}
 
@@ -80,20 +88,30 @@ class courseActions{
 					return null;
 				}
 			} 
-			if(!courseTable::update($id, $name, $teacher, $program, $cost, $file)){
+			try{
+				if(!courseTable::update($id, $name, $teacher, $program, $cost, $file)){
+					self::$message .= "Ошибка:<br>".PDO::errorInfo();
+					return null;
+				}
+				return true;
+			}
+			catch(Exception $e){
+				self::$message .= "Ошибка:<br>".$e;
+			}
+		}
+	}
+
+	public static function delete($id){
+		try{
+			if(!courseTable::delete($id)){
 				self::$message .= "Ошибка:<br>".PDO::errorInfo();
 				return null;
 			}
 			return true;
 		}
-	}
-
-	public static function delete($id){
-		if(!courseTable::delete($id)){
-			self::$message .= "Ошибка:<br>".PDO::errorInfo();
-			return null;
+		catch(Exception $e){
+			self::$message .= "Ошибка:<br>".$e;
 		}
-		return true;
 	}
 
 	public static function fillEdit($id){
@@ -150,7 +168,12 @@ class teachersActions{
 	}
 
 	public static function viewAll(){
-		$array = teachersTable::getTeachersType();
+		try{
+			$array = teachersTable::getTeachersType();
+		}
+		catch(Exception $e){
+			self::$message .= "Ошибка:<br>".$e;
+		}
 		if($array === null){
 			self::$message .= "Ошибка: не удалось извлечь данные (teachers)";
 			return null;
@@ -165,11 +188,16 @@ class teachersActions{
 		if(!empty($_POST)){
 			$type = self::checkData($_POST['type-name']);
 			
-			if(!teachersTable::update($id, $type)){
-				self::$message .= "Ошибка:<br>".PDO::errorInfo();
-				return null;
+			try{
+				if(!teachersTable::update($id, $type)){
+					self::$message .= "Ошибка:<br>".PDO::errorInfo();
+					return null;
+				}
+				return true;
 			}
-			return true;
+			catch(Exception $e){
+				self::$message .= "Ошибка:<br>".$e;
+			}
 		}
 	}
 
@@ -177,20 +205,31 @@ class teachersActions{
 		if('POST' != $_SERVER['REQUEST_METHOD']){
 			return null;
 		}
+		//var_dump($_POST);
 		if(!empty($_POST)){
-			$type = self::checkData($_POST['type-name']);
-			if(!teachersTable::insert($type)){
-				self::$message .= "Ошибка:<br>".PDO::errorInfo();
-				return null;
+			$type = self::checkData($_POST['type']);
+			try{
+				if(!teachersTable::insert($type)){
+					self::$message .= "Ошибка:<br>".PDO::errorInfo();
+					return null;
+				}
+				return true;
 			}
-			return true;
+			catch(Exception $e){
+				self::$message .= "Ошибка:<br>".$e;
+			}
 		}
 	}
 
 	public static function delete($id){
-		if(!teachersTable::delete($id)){
-			self::$message .= "Ошибка:<br>".PDO::errorInfo();
-			return null;
+		try{
+			if(!teachersTable::delete($id)){
+				self::$message .= "Ошибка:<br>".PDO::errorInfo();
+				return null;
+			}
+		}
+		catch(Exception $e){
+			self::$message .= "Ошибка:<br>".$e;
 		}
 		return true;
 	}
@@ -245,6 +284,7 @@ if(str_contains($prev_page, "teachers.php")){
 	if('GET' == $_SERVER['REQUEST_METHOD'] && isset($_GET['data-id-item']) && $_GET['data-id-item'] < 0){
 		$id = abs($_GET['data-id-item']);
 		teachersActions::delete($id);
+		echo $id;
 		header(header:"Location:../teachers.php");
 		die();
 	}	
