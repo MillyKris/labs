@@ -3,15 +3,16 @@
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/LR2.1/.core/actions.php'); 
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/LR2.1/templates/header.php');
 
-
-$result = courseActions::viewAll();
+if(isset($_GET['preset'])){
+    $result = courseActions::viewAll($_GET['preset']);
+}
+else $result = courseActions::viewAll();
 $message = courseActions::getMessage();
 ?>
 
 <div class="container text-center" style = "margin-top:70px;">
 	<h1 style = "margin-bottom:60px;">Список курсов:</h1>
-            <?php 
-
+            <?php
                 if(isset($message) && strlen($message) > 0):
                     echo "<div style = 'padding: 0 5px;margin: auto; width:310px; height:100px;background:rgba(255, 0, 0, 0.4);'><h2 style = 'line-height: 100px;'>".$message."</h2></div>";
                     else:?>
@@ -29,21 +30,14 @@ $message = courseActions::getMessage();
                             </thead>
                             <tbody>
                                 <?php
-                                if(isset($_GET['preset']) && !empty($result)){
+                                if(/*isset($_GET['preset']) &&*/ !empty($result)){
                                     foreach($result as $row):
-                                        if($row['id-teacher-type'] == $_GET['preset']):
+                                        //if($row['id-teacher-type'] == $_GET['preset']):
                                     ?>
                                     <tr>
                                         <td><img src="<?=htmlspecialchars($row['img_path'])?>"width = "100"></td>
                                         <td><?=htmlspecialchars($row['name'])?></td>
-                                        <td><?php
-                                        for($i = 0; $i < count($typesTeachers); $i ++){
-                                            if($typesTeachers[$i]['type-id'] == $row['id-teacher-type']){
-                                                echo htmlspecialchars($typesTeachers[$i]['type-name']);
-                                                break;
-                                            }
-                                        }
-                                        ?></td>
+                                        <td><?=htmlspecialchars($row['type-name'])?></td>
                                         <td><?=htmlspecialchars($row['program'])?></td>
                                         <td><?=htmlspecialchars($row['cost'])?></td>
                                         <td>
@@ -55,33 +49,9 @@ $message = courseActions::getMessage();
                                              <a target="blank" class="btn btn-outline-danger delete"id="<?=$row['course-id']?>" href = "/LR2.1/.core/actions.php?data-id-item=<?=-$row['course-id']?>">Удалить</a>
                                         </td>
                                     </tr>
-                                <?php endif; endforeach;
+                                <?php /*endif;*/ endforeach;
                                 }
-                                else if(!empty($result)){
-                                foreach($result as $row):?>
-                                    <tr>
-                                        <td><img src="<?=htmlspecialchars($row['img_path'])?>"width = "100"></td>
-                                        <td><?=htmlspecialchars($row['name'])?></td>
-                                        <td><?php
-                                        for($i = 0; $i < count($typesTeachers); $i ++){
-                                            if($typesTeachers[$i]['type-id'] == $row['id-teacher-type']){
-                                                echo htmlspecialchars($typesTeachers[$i]['type-name']);
-                                                break;
-                                            }
-                                        }
-                                        ?></td>
-                                        <td><?=htmlspecialchars($row['program'])?></td>
-                                        <td><?=htmlspecialchars($row['cost'])?></td>
-                                        <td>
-                                            <a class="btn btn-outline-info"id="<?=$row['course-id']?>" href = "/LR2.1/editCourse.php?data-id-item=<?=$row['course-id']?>">Редактировать</a>
-                                        </td>
-                                        <td>
-                                            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-                                             <a target="blank" class="btn btn-outline-danger delete"id="<?=$row['course-id']?>" href = "/LR2.1/.core/actions.php?data-id-item=<?=-$row['course-id']?>">Удалить</a>
-                                        </td>
-                                    </tr>
-                                <?php endforeach;}?>            
+                                ?>            
                             </tbody>
                         </table>
                     <?php endif;
