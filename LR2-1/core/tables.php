@@ -1,8 +1,13 @@
 <?php 
 class courseTable
 {
-	public static function selectAll(){
-		$query = Database::prepare('SELECT `course-id`, `img_path`, `name`,  `program`, `cost`, `id-teacher-type` FROM `courses` ORDER BY `name`;');
+	public static function selectAll($filter){
+		if($filter < 0)
+			$query = Database::prepare('SELECT `course-id`, `img_path`, `name`, `type-id`, `type-name`, `program`, `cost` FROM `courses` INNER JOIN `teachers_types` ON `type-id` = `id-teacher-type` ORDER BY `name`;');
+		else{
+			$query = Database::prepare('SELECT `course-id`, `img_path`, `name`, `type-id`, `type-name`, `program`, `cost` FROM `courses` INNER JOIN `teachers_types` ON `type-id` = `id-teacher-type` WHERE `type-id` = :id ORDER BY `name`;');
+			$query->bindValue(":id", $filter);
+		}
 		$query->execute();
 		$courses = $query->fetchAll();
 		if(!count($courses)){
